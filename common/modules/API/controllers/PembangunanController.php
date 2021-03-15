@@ -35,31 +35,13 @@ class PembangunanController extends Controller
      */
     public function actionIndex()
     {
-        $data = Pembangunan::find()->ORDERBY(['id' => SORT_DESC])->one();
-        echo "<pre>";
-        return json_encode([
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $data = (object) Pembangunan::find()->all();
+        return [
             'status' => true,
-            'message' => "Succes send data",
-            'data' =>  $data,
-            'id' => $data['id'],
-            'anggaran' => $data['anggaran'],
-            'users_id' => $data['user_id'],
-            'prosentase' => $data['prosentase'],
-            'nama_pembangunan' => $data['nama_pembangunan'],
-            'foto' => $data['foto'],
-            'tgl_mulai' => $data['tgl_mulai'],
-            'tgl_selesai' => $data['tgl_selesai'],
-            'latitude' => $data['latitude'],
-            'longitude' => $data['longitude'],
-            'keterangan' => $data['keterangan'],
-            'sumber_dana_pembangunan_id' => $data['sumber_dana_pembangunan_id'],
-            'kategori_pembangunan_id' => $data['kategori_pembangunan_id'],
-            'status_pembangunan_id' => $data['kategori_pembangunan_id'],
-            'mitra_id' => $data['mitra_id'],
-            'created_at' => $data['created_at'],
-            'updated_at' => $data['updated_at'],
-        ]);
-        
+            'message' => true,
+            'data' => $data,
+        ];
     }
 
     /**

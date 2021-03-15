@@ -35,12 +35,9 @@ class KategoriPembangunanController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => KategoriPembangunan::find(),
-        ]);
-
-        $data = KategoriPembangunan::find()->all();
-        return var_dump($data);
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $data = (object) KategoriPembangunan::find()->all();
+        return ['data' => $data];
     }
 
     /**
