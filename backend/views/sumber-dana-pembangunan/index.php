@@ -18,20 +18,33 @@ $this->title = 'Sumber Dana Pembangunans';
         </p>
     <?php } ?>
 
+    <?php if (Yii::$app->user->identity->roles_id == 1) { ?>
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
+
+                'id',
+                'nama',
+                'created_at',
+                'updated_at',
+
+                ['class' => 'yii\grid\ActionColumn'],
+            ],
+        ]);
+    } ?>
 
     <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            'dataProvider' => $dataProvider,
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'nama',
-            'created_at',
-            'updated_at',
+                'id',
+                'nama',
+                'created_at',
+                'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
+            ],
+        ]); ?>
 
 </div>

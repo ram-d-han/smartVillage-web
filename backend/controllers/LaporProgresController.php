@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * LaporProgresController implements the CRUD actions for LaporProgress model.
@@ -65,9 +66,15 @@ class LaporProgresController extends Controller
     public function actionCreate()
     {
         $model = new LaporProgress();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+        if ($model->image && $model->validate()) {
+                $nama = md5($model->image->baseName.'-'. rand(10, 70)).'.'.$model->image->getExtension();
+                $model->image->saveAs('@frontend/web/uploads/progress/'.$nama);
+                $model->image = $nama;
+                $model->save();
+            }
+            return $this->redirect (['view','id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -85,9 +92,15 @@ class LaporProgresController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+        if ($model->image && $model->validate()) {
+                $nama = md5($model->image->baseName.'-'. rand(10, 70)).'.'.$model->image->getExtension();
+                $model->image->saveAs('@frontend/web/uploads/progress/'.$nama);
+                $model->image = $nama;
+                $model->save();
+            }
+            return $this->redirect (['view','id' => $model->id]);
         }
 
         return $this->render('update', [

@@ -11,8 +11,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lapor-progress-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Create Lapor Progress', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -24,7 +22,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'image',
+            [
+                    'label' => 'image',
+                    'format' => ['image',['width' => '250', 'height' => '200']],
+                    'value' => function ($data) {
+                        return $data->getImageUrl();
+                    }
+                ],
             'tanggal',
             'capaian_progress',
             'uraian_pekerjaan:ntext',

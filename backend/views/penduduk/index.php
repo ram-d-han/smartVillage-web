@@ -74,7 +74,6 @@ if (Yii::$app->user->identity->roles_id == 2) {
                 //'created_at',
                 //'updated_at',
 
-                ['class' => 'yii\grid\ActionColumn'],
             ],
         ]); ?>
     </div>

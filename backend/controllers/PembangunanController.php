@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * PembangunanController implements the CRUD actions for Pembangunan model.
@@ -75,8 +76,14 @@ class PembangunanController extends Controller
     public function actionCreate()
     {
         $model = new Pembangunan();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->foto = UploadedFile::getInstance($model, 'foto');
+        if ($model->foto && $model->validate()) {
+                $nama = md5($model->foto->baseName.'-'. rand(10, 70)).'.'.$model->foto->getExtension();
+                $model->foto->saveAs('@frontend/web/uploads/pembangunan/'.$nama);
+                $model->foto = $nama;
+                $model->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -95,8 +102,14 @@ class PembangunanController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->foto = UploadedFile::getInstance($model, 'foto');
+        if ($model->foto && $model->validate()) {
+                $nama = md5($model->foto->baseName.'-'. rand(10, 70)).'.'.$model->foto->getExtension();
+                $model->foto->saveAs('@frontend/web/uploads/pembangunan/'.$nama);
+                $model->foto = $nama;
+                $model->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\helpers\url;
 
 /**
  * This is the model class for table "lapor_aduan".
@@ -92,5 +93,10 @@ class LaporAduan extends \yii\db\ActiveRecord
     public function getPembangunan()
     {
         return $this->hasOne(Pembangunan::className(), ['id' => 'pembangunan_id']);
+    }
+
+    public function getImageUrl()
+    {
+        return yii::getAlias('@Uploads').'/'.$this->foto;
     }
 }

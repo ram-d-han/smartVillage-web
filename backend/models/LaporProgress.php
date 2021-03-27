@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\helpers\url;
 
 /**
  * This is the model class for table "lapor_progress".
@@ -37,7 +38,7 @@ class LaporProgress extends \yii\db\ActiveRecord
             [['capaian_progress'], 'number'],
             [['uraian_pekerjaan'], 'string'],
             [['pembangunan_id'], 'integer'],
-            [['image'], 'string', 'max' => 255],
+            [['image'], 'file', 'extensions' => 'jpg, png'],
             [['pembangunan_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pembangunan::className(), 'targetAttribute' => ['pembangunan_id' => 'id']],
         ];
     }
@@ -65,5 +66,10 @@ class LaporProgress extends \yii\db\ActiveRecord
     public function getPembangunan()
     {
         return $this->hasOne(Pembangunan::className(), ['id' => 'pembangunan_id']);
+    }
+
+    public function getImageUrl()
+    {
+        return yii::getAlias('@Uploads3').'/'.$this->image;
     }
 }

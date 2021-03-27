@@ -11,8 +11,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pembangunan-index" style="overflow-x: scroll;">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?php if (Yii::$app->user->identity->roles_id == 1) { ?>
 
         <p>
@@ -21,33 +19,72 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php } ?>
 
+    <?php if (Yii::$app->user->identity->roles_id == 1) { ?>
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
+
+                'id',
+                'nama_pembangunan',
+                [
+                        'label' => 'foto',
+                        'format' => ['image',['width' => '250', 'height' => '200']],
+                        'value' => function ($data) {
+                            return $data->getImageUrl();
+                        }
+                    ],
+                'anggaran',
+                'tgl_mulai',
+                'tgl_selesai',
+                //'longitude',
+                //'latitude',
+                'keterangan',
+                //'prosentase',
+                //'sumber_dana_pembangunan_id',
+                //'kategori_pembangunan_id',
+                //'status_pembangunan_id',
+                //'user_id',
+                //'mitra_id',
+                //'created_at',
+                //'updated_at',
+
+                ['class' => 'yii\grid\ActionColumn'],
+            ],
+        ]);
+    } ?>
 
     <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            'dataProvider' => $dataProvider,
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'nama_pembangunan',
-            // 'foto',
-            'anggaran',
-            'tgl_mulai',
-            'tgl_selesai',
-            //'longitude',
-            //'latitude',
-            'keterangan',
-            //'prosentase',
-            //'sumber_dana_pembangunan_id',
-            //'kategori_pembangunan_id',
-            //'status_pembangunan_id',
-            //'user_id',
-            //'mitra_id',
-            //'created_at',
-            //'updated_at',
+                'id',
+                'nama_pembangunan',
+                [
+                        'label' => 'foto',
+                        'format' => ['image',['width' => '250', 'height' => '200']],
+                        'value' => function ($data) {
+                            return $data->getImageUrl();
+                        }
+                    ],
+                'anggaran',
+                'tgl_mulai',
+                'tgl_selesai',
+                //'longitude',
+                //'latitude',
+                'keterangan',
+                //'prosentase',
+                //'sumber_dana_pembangunan_id',
+                //'kategori_pembangunan_id',
+                //'status_pembangunan_id',
+                //'user_id',
+                //'mitra_id',
+                //'created_at',
+                //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+            ],
+        ]); ?>
 
 
 </div>
