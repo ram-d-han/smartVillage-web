@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use Yii\helpers\url;
 
 /**
  * This is the model class for table "lapor_aduan".
@@ -40,7 +41,7 @@ class LaporAduan extends \yii\db\ActiveRecord
             [['deskripsi', 'status'], 'string'],
             [['user_id', 'pembangunan_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['foto'], 'string', 'max' => 255],
+            [['foto'], 'file', 'extensions' => 'jpg, png'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['pembangunan_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pembangunan::className(), 'targetAttribute' => ['pembangunan_id' => 'id']],
@@ -92,5 +93,10 @@ class LaporAduan extends \yii\db\ActiveRecord
     public function getPembangunan()
     {
         return $this->hasOne(Pembangunan::className(), ['id' => 'pembangunan_id']);
+    }
+
+    public function getImageUrl()
+    {
+        return yii::getAlias('@Uploads').'/'.$this->foto;
     }
 }

@@ -7,7 +7,6 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Sumber Dana Pembangunans';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sumber-dana-pembangunan-index">
 

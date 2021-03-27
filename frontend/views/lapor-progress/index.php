@@ -7,7 +7,6 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Laporan Progress';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <style type="text/css">
@@ -30,10 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
+                // ['class' => 'yii\grid\SerialColumn'],
 
-                'id',
-                'image',
+                // 'id',
+                [
+                    'label' => 'foto',
+                    'format' => ['image',['width' => '250', 'height' => '200']],
+                    'value' => function ($data) {
+                        return $data->getImageUrl();
+                    }
+                ],
                 'tanggal',
                 'capaian_progress',
                 'uraian_pekerjaan:ntext',

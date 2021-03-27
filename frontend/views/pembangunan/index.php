@@ -2,12 +2,12 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\url;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Pembangunan';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <style type="text/css">
@@ -31,23 +31,28 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
 
-                'id',
+                // 'id',
                 'nama_pembangunan',
-                // 'foto',
+                [
+                    'label' => 'foto',
+                    'format' => ['image',['width' => '250', 'height' => '200']],
+                    'value' => function ($data) {
+                        return $data->getImageUrl();
+                    }
+                ],
                 'anggaran',
                 'tgl_mulai',
                 'tgl_selesai',
-                //'longitude',
-                //'latitude',
+                'longitude',
+                'latitude',
                 'keterangan',
-                //'prosentase',
+                'prosentase',
                 //'sumber_dana_pembangunan_id',
                 //'kategori_pembangunan_id',
-                'status_pembangunan_id',
+                // 'status_pembangunan_id',
                 //'user_id',
-                'mitra_id',
+                // 'mitra_id',
                 //'created_at',
                 //'updated_at',
 

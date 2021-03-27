@@ -7,7 +7,6 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Pengumuman';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <style type="text/css">
@@ -30,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
+                // ['class' => 'yii\grid\SerialColumn'],
 
-                'id',
+                // 'id',
                 'perihal',
                 'isi:ntext',
                 'tgl_pengumuman',

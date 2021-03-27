@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\helpers\url;
 
 /**
  * This is the model class for table "pembangunan".
@@ -218,5 +219,10 @@ class Pembangunan extends \yii\db\ActiveRecord
     public function getSumberDanaPembangunan()
     {
         return $this->hasOne(SumberDanaPembangunan::className(), ['id' => 'sumber_dana_pembangunan_id']);
+    }
+
+    public function getImageUrl()
+    {
+        return yii::getAlias('@Uploads2').'/'.$this->foto;
     }
 }

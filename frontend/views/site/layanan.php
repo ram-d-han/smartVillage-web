@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <style type="text/css">
-	@media (max-width: 1380px){
+	@media (min-width: 1000px){
 		#about {
 			margin-top: 25px;
 			}
@@ -63,8 +63,9 @@ $this->params['breadcrumbs'][] = $this->title;
 			visibility: hidden;
 		}
 		.slides {
-			width: 100%;
+			width: 500px;
 			height: 100%;
+			display: flex;
 		}
 		.slide {
 			width: 100%;
@@ -72,35 +73,35 @@ $this->params['breadcrumbs'][] = $this->title;
 			transition: 0.6s;
 		}
 		.slide img {
-			width: 100%;
-			height: 100%;
+/*			width: 100%;
+*/			height: 100%;
 		}
 		#r1:checked ~ .s1 {
-			margin-top: 0;
+			margin-left: 0;
 		}
 		#r2:checked ~ .s1 {
-			margin-top: -80%;
+			margin-left: -100%;
 		}
 		#r3:checked ~ .s1 {
-			margin-top: -160%;
+			margin-left: -200%;
 		}
 		#r4:checked ~ .s1 {
-			margin-top: -240%;
+			margin-left: -300%;
 		}
 		#r5:checked ~ .s1 {
-			margin-top: -320%;
+			margin-left: -400%;
 		}
 		#r6:checked ~ .s1 {
-			margin-top: -400%;
+			margin-left: -400%;
 		}
 		#r7:checked ~ .s1 {
-			margin-top: -480%;
+			margin-left: -500%;
 		}
 		#r8:checked ~ .s1 {
-			margin-top: -560%;
+			margin-left: -600%;
 		}
 	}
-	@media (max-width: 992px){
+	@media (max-width: 1000px){
 		#about {
 			margin-top: -18px;
 			}
@@ -109,15 +110,15 @@ $this->params['breadcrumbs'][] = $this->title;
 			color: white;
 			}
 		.slidershow{
-			width: 500px;
-			height: 400px;
+			width: 550px;
+			height: 450px;
 			overflow: hidden;
 		}
 		.middle {
 			position: absolute;
 			top : 57%;
 			left: 50%;
-			transform: translate(-50%,-42%);
+			transform: translate(-50%,-47%);
 		}
 		h3 {
 			font-weight: bold;
@@ -133,14 +134,14 @@ $this->params['breadcrumbs'][] = $this->title;
 		}
 		.navigation {
 			position: absolute;
-			bottom: -2%;
+			bottom: 8%;
 			left: 50%;
 			transform: translateX(-50%);
 			display: flex;
 		}
 		.bar {
-			width: 50px;
-			height: 17px;
+			width: 60px;
+			height: 23px;
 			border : 2px solid black;
 			margin : 3px;
 			cursor: pointer;
@@ -156,6 +157,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		.slides {
 			width: 100%;
 			height: 100%;
+			display: flex;
 		}
 		.slide {
 			width: 100%;
@@ -163,32 +165,31 @@ $this->params['breadcrumbs'][] = $this->title;
 			transition: 0.6s;
 		}
 		.slide img {
-			width: 100%;
 			height: 100%;
 		}
 		#r1:checked ~ .s1 {
-			margin-top: 0;
+			margin-left: 0;
 		}
 		#r2:checked ~ .s1 {
-			margin-top: -80%;
+			margin-left: -100%;
 		}
 		#r3:checked ~ .s1 {
-			margin-top: -160%;
+			margin-left: -200%;
 		}
 		#r4:checked ~ .s1 {
-			margin-top: -240%;
+			margin-left: -300%;
 		}
 		#r5:checked ~ .s1 {
-			margin-top: -320%;
+			margin-left: -400%;
 		}
 		#r6:checked ~ .s1 {
-			margin-top: -400%;
+			margin-left: -500%;
 		}
 		#r7:checked ~ .s1 {
-			margin-top: -480%;
+			margin-left: -600%;
 		}
 		#r8:checked ~ .s1 {
-			margin-top: -560%;
+			margin-left: -700%;
 		}
 	}
 </style>

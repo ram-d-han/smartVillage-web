@@ -1,19 +1,18 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use Yii;
-use frontend\models\LaporAduan;
+use backend\models\LaporProgress;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * LaporAduanController implements the CRUD actions for LaporAduan model.
+ * LaporProgresController implements the CRUD actions for LaporProgress model.
  */
-class LaporAduanController extends Controller
+class LaporProgresController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,13 +30,13 @@ class LaporAduanController extends Controller
     }
 
     /**
-     * Lists all LaporAduan models.
+     * Lists all LaporProgress models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => LaporAduan::find(),
+            'query' => LaporProgress::find(),
         ]);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class LaporAduanController extends Controller
     }
 
     /**
-     * Displays a single LaporAduan model.
+     * Displays a single LaporProgress model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,22 +58,16 @@ class LaporAduanController extends Controller
     }
 
     /**
-     * Creates a new LaporAduan model.
+     * Creates a new LaporProgress model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new LaporAduan();
-        if ($model->load(Yii::$app->request->post())) {
-            $model->foto = UploadedFile::getInstance($model, 'foto');
-        if ($model->foto && $model->validate()) {
-                $nama = md5($model->foto->baseName.'-'. rand(10, 70)).'.'.$model->foto->getExtension();
-                $model->foto->saveAs('uploads/'.$nama);
-                $model->foto = $nama;
-                $model->save();
-            }
-            return $this->redirect (['view','id' => $model->id]);
+        $model = new LaporProgress();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -83,49 +76,49 @@ class LaporAduanController extends Controller
     }
 
     /**
-     * Updates an existing LaporAduan model.
+     * Updates an existing LaporProgress model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    // public function actionUpdate($id)
-    // {
-    //     $model = $this->findModel($id);
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
 
-    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
-    //         return $this->redirect(['view', 'id' => $model->id]);
-    //     }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
 
-    //     return $this->render('update', [
-    //         'model' => $model,
-    //     ]);
-    // }
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
 
     /**
-     * Deletes an existing LaporAduan model.
+     * Deletes an existing LaporProgress model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    // public function actionDelete($id)
-    // {
-    //     $this->findModel($id)->delete();
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
 
-    //     return $this->redirect(['index']);
-    // }
+        return $this->redirect(['index']);
+    }
 
     /**
-     * Finds the LaporAduan model based on its primary key value.
+     * Finds the LaporProgress model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return LaporAduan the loaded model
+     * @return LaporProgress the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = LaporAduan::findOne($id)) !== null) {
+        if (($model = LaporProgress::findOne($id)) !== null) {
             return $model;
         }
 

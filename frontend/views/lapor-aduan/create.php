@@ -6,8 +6,6 @@ use yii\helpers\Html;
 /* @var $model frontend\models\LaporAduan */
 
 $this->title = 'Create Lapor Aduan';
-$this->params['breadcrumbs'][] = ['label' => 'Lapor Aduans', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lapor-aduan-create">
 

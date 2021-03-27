@@ -49,7 +49,12 @@
                         'icon' => 'gear',
                         'url' => '#',
                         'items' => [
+                            ['label' => 'Progres Pembangunan', 'icon' => 'book', 'url' => ['lapor-progres/index']],
                             ['label' => 'Status Pembangunan', 'icon' => 'book', 'url' => ['status-pembangunan/index']],
+                            ['label' => 'Kategori Pembangunan', 'icon' => 'book', 'url' => ['kategori-pembangunan/index']],
+                            ['label' => 'Sumber Dana Pembangunan', 'icon' => 'book', 'url' => ['sumber-dana-pembangunan/index']],
+                            ['label' => 'Pembangunan', 'icon' => 'book', 'url' => ['pembangunan/index']],
+                            ['label' => 'Mitra', 'icon' => 'book', 'url' => ['mitra/index']],
                         ],
                     ],
 
@@ -63,6 +68,7 @@
                         ],
                     ],
 
+                    ['label' => 'Pengumuman', 'icon' => 'bell', 'url' => ['pengumuman/index']],
                     ['label' => 'Sign Out', 'icon' => 'lock', 'url' => ['site/logout']],
                 ],
             ]
